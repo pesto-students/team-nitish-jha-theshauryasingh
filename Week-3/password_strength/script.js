@@ -13,10 +13,12 @@ function isStrongPassword(pass) {
 function checkUpperCase(string) {
     for (let i = 0; i < string.length; i++) {
         character = string[i]
-        if (Number(character) != 'Nan'){
-            console.log(Number(character));
+        // console.log(character)
+        if ( !(isNaN(Number(character)))){
+            // console.log('.. ', Number(character));
             continue;
         } else if (character == character.toUpperCase()) {
+            // console.log(',, ', character);
             return true;
         }
     }
