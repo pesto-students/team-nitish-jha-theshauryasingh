@@ -1,17 +1,23 @@
 function counter() {
-    return 
+    let count = 0
+    return function () {
+        count ++;
+        return count
+    }
 }
 
 const firstCounter = counter()
 const secondCounter = counter()
 
-// loop 5 times
 const firstValues = [];
-firstCounter();
+for (let i = 0; i < 5; i++) {
+    firstValues.push(firstCounter());
+}
 
-//loop 3 times
 const secondValues = [];
-secondCounter();
+for (let i = 0; i < 5; i++) {
+    secondValues.push(secondCounter());
+}
 
 console.log(firstValues);
 console.log(secondValues);
