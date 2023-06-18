@@ -1,41 +1,47 @@
 class Calculator {
-    add (){
+    add (a,b){
         //console.log(a,b);
-        //loop on 'this.nums'
-        const sum = this.a + this.b;
-        //console.log(sum);
-        return sum;
+        return a + b ;
     }
     subtract (a,b){
-        return a - b
+        return a - b ;
     }
     multiply (a,b){
-        return a * b
+        console.log(a,b);
+        return a * b ;
     }
     divide (a,b){
-        return a/b
+        return a / b ;
     }
 }
 
 class ScientificCalculator extends Calculator {
-    square (a,b){
-        return a + b
+    square (a){
+        return a * a ;
     }
-    cube (a,b){
-        return a - b
+    cube (a){
+        return a * a * a ;
     }
     power (a,b){
-        return a * b
+        console.log(a,b);
+        return a ** b ;
     }
 }
 
 const calc = new ScientificCalculator();
-let calc1 = new Calculator()
-const args = {nums : {a:2, b:6, c:7}};
-console.log(calc1.add.call(args));
+const calc1 = new Calculator()
 
+// let args;
+// args = {a:10, b:5};
 
+console.log(calc1.add.call(null,10,5));
+console.log(calc1.subtract.apply(null,[10,5]));
 
+var multiplyByTwo = calc.multiply.bind(undefined, 2);
+var powerOfThree = calc.power.bind(undefined, 2);
+
+console.log(multiplyByTwo(5));
+console.log(powerOfThree(3));
 
 
 
