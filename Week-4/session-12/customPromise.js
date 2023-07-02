@@ -10,6 +10,7 @@
 class CustomPromise {
     constructor(executor) {
       // Your code here
+    
     }
   
     then(onFulfilled, onRejected) {
