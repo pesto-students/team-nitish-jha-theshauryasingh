@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Happy Birthday message creator</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+      <header></header>
+      <main>
+        <H2> Happy Birthday message creator </H2>
+        <section>
+            <form action="/birthday.com" enctype="multipart/form-data" method="post">
+              <div>
+                <label>Message</label>
+                <input type="text" name="fullName" id="fullName" required>
+              </div>
+              <div>
+                <label>Email Address</label>
+                <input type="text" name="email" id="email" pattern="[a-zA-Z0-9-_\.]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*" required>
+              </div>
+              <div>
+                <label>Date to send </label>
+                <input type="date">
+              </div>
+              <div>
+                <label>Message color</label>
+                <input type="color" default="black" name="color" id="color" required>
+              </div>
+              <div>
+                <label>Number of blinks</label>
+                <input type="text" default="0" min="0" max="10" name="email" id="email" required>
+              </div>
+              <div>
+                <label>Music Volume</label>
+                <input type="range" default="20" min="0" max="50" name="music" id="music">
+              </div>
+              <div>
+                <input type="submit" name="submit" id="submit">
+                <!-- <button type="submit" name="submit" id="submit">Submit</button> -->
+              </div>
+            </form>
+        </section>
+      </main>
+      <footer></footer>
+  </body>
+</html><html>
+
+</html>
