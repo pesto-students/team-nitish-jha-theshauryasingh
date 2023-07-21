@@ -4,21 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>HTML 5 Boilerplate</title>
+    <title>Starting Lineup</title>
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
       <header></header>
-      <aside></aside>
       <main>
+        <H2> Starting Lineup </H2>
         <section>
-            <form>
-            </form>
+          <p>
+            <fieldset>
+              <legend>Status:</legend>
+              <label><input type="radio" name="status" value="draft"> Draft</label>
+              <label><input type="radio" name="status" value="final" checked> Final</label>
+            </fieldset>
+          </p>
+          <p>
+            Date 
+            <select id="gameDate" name="gameDate">
+            <option value="March 20">March 20</option>
+            <option value="March 22">March 22</option>
+            <option value="March 24">March 24</option>
+            <option value="March 26">March 26</option>
+            </select> 
+          </p>
+          <p>
+            <fieldset>
+              <legend>Players:</legend>
+                <div><label><input type="checkbox" name="option1" value="MS Dhoni"> MS Dhoni </label></div>
+                <div><label><input type="checkbox" name="option2" value="Virat Kohli"> Virat Kohli </label></div>
+                <div><label><input type="checkbox" name="option3" value="Sir Jadeja"> Sir Jadeja </label></div>
+            </fieldset>
+          </p>
+          <input type="submit">
         </section>
       </main>
-      <aside></aside>
       <footer></footer>
   </body>
-</html><html>
-
 </html>

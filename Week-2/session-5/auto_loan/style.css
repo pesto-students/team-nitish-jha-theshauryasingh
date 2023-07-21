@@ -1,0 +1,47 @@
+/* Your code goes here */
+body {
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    text-align: center;
+    font-size: 13px;
+}
+
+h1{
+  font-size: 16px;
+  font-color: #444444
+}
+
+.offer-data{
+  display:flex
+}
+
+.offer{
+  margin: 10px;
+  border: 1px solid black;
+}
+
+.offerTitle{
+  background-color: #00b3b3;
+  padding: 15px;
+}
+
+.offerContents{
+  background-color:grey;
+  padding : 5px;
+  text-align: left;
+}
+
+tr {
+  background-color: lightgrey;
+}
+td, th {
+  padding: 3px ;
+}
+
+.finalValue{
+  font-weight: bold;
+  font-color: #2222ff;
+}
