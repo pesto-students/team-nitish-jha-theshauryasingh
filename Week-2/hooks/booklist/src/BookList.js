@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'; //Component
+import useBookFilter from './useBookFilter';
 import './BookList.css';
 // import Book from './Book';
 import BookDetail from './BookDetail';
@@ -7,6 +8,7 @@ import BookForm from './BookForm';
 
 function BookList(){
   const [books, setState] = useState('');
+  const [search, setSearch] = useState('');
 
   const addBook = (newBook) => {
     setState([...books, newBook]);
@@ -21,6 +23,11 @@ function BookList(){
     setState(initialData);
   };
 
+  // const handleSearch = (search) => {
+  //   const filteredBooks  = useBookFilter(books, search)
+  //   setState(filteredBooks )
+  // }
+
   return (
     <div className="book-list-container">
       <header className="app-header">
@@ -31,6 +38,10 @@ function BookList(){
       <h3>
           List of books
       </h3>
+      {/* <form onSubmit={handleSearch}>
+        <input type="text" placeholder="write search query" value={search}  onChange={(e) => {setSearch(e.target.value)}} />
+        <button type="submit">search</button>
+      </form> */}
       {books.length === 0 ? <div className="book-list">book list is currently empty</div> 
       : <div className="book-list">
         { books.map((book, index)=>(
