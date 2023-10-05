@@ -1,12 +1,13 @@
 import Header from '../components/Header';
+import Display from '../components/Display';
+
+// getAllProducts
 
 function Product() {
     return (
         <>
             <Header/>
-            <h1>
-                product
-            </h1>
+            <Display/>
         </>
     )
 }

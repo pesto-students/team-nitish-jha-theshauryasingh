@@ -1,12 +1,14 @@
 import Header from '../components/Header';
-import Display from '../components/Display';
 
+// getAllProducts
 
 function Home() {
     return (
         <>
             <Header/>
-            <Display/>
+            <h1>
+                Landing Page
+            </h1>
         </>
     )
 }

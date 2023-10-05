@@ -1,12 +1,12 @@
 import Header from '../components/Header';
+import CartDisplay from '../components/CartDisplay';
+
 
 function Cart() {
     return (
         <>
             <Header/>
-            <h1>
-                cart
-            </h1>
+            <CartDisplay/>
         </>
     )
 }
