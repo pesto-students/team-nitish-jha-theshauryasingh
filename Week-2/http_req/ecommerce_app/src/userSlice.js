@@ -4,7 +4,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const userSlice = createSlice({
   name: 'user',
   initialState: {
-    userId: 1, // Initial value of cart ID
+    userId: 101, // Initial value of cart ID
   },
   reducers: {
     setUserId: (state, action) => { // Actions(functions that modify the state)

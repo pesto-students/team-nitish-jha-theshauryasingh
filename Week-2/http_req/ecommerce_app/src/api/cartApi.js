@@ -7,9 +7,11 @@ function getDate(){
 }
 
 // Function to get all cart products
-export const getAllCartProducts = async (cartId) => {
+const getAllCartProducts = async (cartId) => {
     try {
-      const response = await fetch(`${API_BASE_URL}/carts/${cartId}`);
+      const api = `${API_BASE_URL}/carts/${cartId}`
+      console.log(api);
+      const response = await fetch(api);
       const data = await response.json();
       return data;
     } catch (error) {
@@ -19,12 +21,13 @@ export const getAllCartProducts = async (cartId) => {
     }
   };
 
-export const addToCart = async (productId,quantity, userId, cartId) => {
-    console.log(`request received ${productId}, ${quantity}, ${userId}, ${cartId}`);
+const addToCart = async (productId,quantity, userId, cartId) => {
     const date = getDate();
     try {
-        const response = await fetch(`https://fakestoreapi.com/carts/${cartId}`,{
-            method:"PUT",
+        const api = `https://fakestoreapi.com/carts/${cartId}`
+        console.log(api, `request received ${productId}, ${quantity}, ${userId}, ${cartId}`);
+        const response = await fetch(api,{
+            method:"PATCH",
             body:JSON.stringify(
                 {
                     userId,
@@ -42,7 +45,7 @@ export const addToCart = async (productId,quantity, userId, cartId) => {
       }
 };
   
-export const createNewCart = async (userId, date, products=[]) => {
+const createNewCart = async (userId, date, products=[]) => {
     try {
         const response = await fetch('https://fakestoreapi.com/carts',{
             method:"POST",

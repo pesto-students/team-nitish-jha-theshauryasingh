@@ -1,25 +1,20 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './DisplayProduct.css';
-import { addToCart } from '../api/cartApi';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCartId, selectCartId } from '../cartSlice';
+import { addToCart } from '../cartSlice';
 import { selectUserId } from '../userSlice';
 
 // const dispatch = useDispatch();
 
 function DisplayProduct ({productId, title, price, description, image}) {
+    // console.log(' DisplayProduct ==>>>   ', productId, title, price, description, image);
     const [displayOneProduct, setDisplayOneProduct] = useState(false);
     const navigate = useNavigate();
 
     const dispatch = useDispatch();
     const userId = useSelector(selectUserId);
-    let cartId = useSelector(selectCartId);
-    if (cartId===null){
-        dispatch(setCartId(1));
-        
-    }
-    cartId = useSelector(selectCartId);
+    let cartId = 102;
 
     const onClickTitle = () => {
         navigate(`/product/${productId}`);
@@ -27,12 +22,10 @@ function DisplayProduct ({productId, title, price, description, image}) {
 
     const handleAddToCart = () => {
         const quantity = 1;
-        console.log(`handleAddToCart - ${productId}, ${quantity}, ${userId}, ${cartId}`)
-        addToCart(productId,quantity, userId, cartId)
-            .then((data)=> { console.log(data); })
-            .catch((error)=> {console.log('Error ', error)});
+        console.log(`handleAddToCart - ${productId}, ${quantity}`)
+        dispatch(addToCart({ productId, quantity }));
           
-    }
+    }   
     
     return(
         <div className="card" >

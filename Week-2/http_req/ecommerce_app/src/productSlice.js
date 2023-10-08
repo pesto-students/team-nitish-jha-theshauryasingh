@@ -1,29 +1,58 @@
-// cartSlice.js
+ // productSlice.js
 import { createSlice } from '@reduxjs/toolkit';
 
-const cartSlice = createSlice({
-  name: 'cart',
+const productSlice = createSlice({
+  name: 'product',
   initialState: {
-    cartId: null, // Initial value of cart ID
+    productItems: {
+    //   '1': {
+    //   title: 'Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops',
+    //   price: 109.95,
+    //   description: 'Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday',
+    //   image: 'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg'
+    // },
+    // '2': {
+    //   title: 'Mens Casual Premium Slim Fit T-Shirts ',
+    //   price: 22.3,
+    //   description: 'Slim-fitting style, contrast raglan long sleeve, three-button henley placket, light weight & soft fabric for breathable and comfortable wearing. And Solid stitched shirts with round neck made for durability and a great fit for casual fashion wear and diehard baseball fans. The Henley style round neckline includes a three-button placket.',
+    //   image: 'https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg'
+    // },
+    // '3': {
+    //   title: 'Mens Cotton Jacket',
+    //   price: 55.99,
+    //   description: 'great outerwear jackets for Spring/Autumn/Winter, suitable for many occasions, such as working, hiking, camping, mountain/rock climbing, cycling, traveling or other outdoors. Good gift choice for you or your family member. A warm hearted love to Father, husband or son in this thanksgiving or Christmas Day.',
+    //   image: 'https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg'
+    // },
+  },
   },
   reducers: {
-    setCartId: (state, action) => { // Actions(functions that modify the state)
-      state.cartId = action.payload;
+    addToProduct: (state, action) => {
+      const products = action.payload;
+      // console.log(" addToProducts ", products)
+      products.forEach((product) => {
+        // console.log(" addToProducts for Each ", product)
+        const { id, title, price, description, image } = product;
+
+        if (state.productItems[id] !== undefined) {
+          //pass
+        } else {
+          state.productItems[id] = {title, price, description, image};
+        }
+      });
+      // console.log(' productSlice addToProduct -->> ', state.productItems);
     },
   },
 });
 
-export const { setCartId } = cartSlice.actions; // Action Creators for the Reducers to export Actions to Modify the State
+export const { addToProduct } = productSlice.actions; // Action Creators for the Reducers to export Actions to Modify the State
 
-export const selectCartId = (state) => state.cart.cartId; // export Selectors to access 
+export const selectProduct = (state) => state.product.productItems;
+export const selectSpecificProduct = (state, productID) => {
+  const productItems = state.product.productItems;
+  if (productItems[productID]) {
+    return productItems[productID];
+  }
+  return null; // Return null if the product doesn't exist
+};
 
-export default cartSlice.reducer; // export reducer for store 
-
-
-
-// use setCartId useDispatch
-// const dispatch = useDispatch();
-// dispatch(setCartId(data.cartId));
-
-// use cartId useSelector
-// const cartId = useSelector(selectCartId);
+export default productSlice.reducer; // export reducer for store 

@@ -1,30 +1,28 @@
 import Header from '../components/Header';
 import '../components/DisplayProduct.css';
-import { addToCart } from '../api/cartApi';
+// import { addToCart } from '../api/cartApi';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCartId, selectCartId } from '../cartSlice';
-import { selectUserId } from '../userSlice';
+import { addToCart } from '../cartSlice';
+import { selectSpecificProduct } from '../productSlice';
+
+
 
 // getAllProducts
 
 function SingleProduct({ productId }) {
     const dispatch = useDispatch();
-    const userId = useSelector(selectUserId);
-    let cartId = useSelector(selectCartId);
-    if (cartId===null){
-        dispatch(setCartId(1));
-        
-    }
-    cartId = useSelector(selectCartId);
+    // const [title, price, description, image] = useSelector(selectSpecificProduct);
+    // console.log(title, price, description, image);
+    const temp = useSelector(selectSpecificProduct);
+    console.log('SingleProduct -> selectSpecificProduct -> ', temp);
 
     const handleAddToCart = () => {
         const quantity = 1;
-        console.log(`handleAddToCart - ${productId}, ${quantity}, ${userId}, ${cartId}`)
-        addToCart(productId,quantity, userId, cartId)
-            .then((data)=> { console.log(data); })
-            .catch((error)=> {console.log('Error ', error)});
+        console.log(`handleAddToCart - ${productId}, ${quantity};`)
+        dispatch(addToCart({ productId, quantity }));
           
     }
+
 
     return (
         <>
