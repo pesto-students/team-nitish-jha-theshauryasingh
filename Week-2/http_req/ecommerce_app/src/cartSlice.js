@@ -21,14 +21,32 @@ const cartSlice = createSlice({
         state.cartItems[productId] = quantity;
       }
     },
+    changeQuantity: (state, action) => {
+      const { productId, quantityChange } = action.payload;
+
+      if (state.cartItems[productId] !== undefined) {
+        state.cartItems[productId] += quantityChange;
+        if (state.cartItems[productId] < 0) {
+          state.cartItems[productId] = 0;
+        }
+      } else {
+        state.cartItems[productId] = quantityChange > 0 ? quantityChange : 0;
+      }
+    },
   },
 });
 
-export const { addToCart } = cartSlice.actions; // Action Creators for the Reducers to export Actions to Modify the State
+export const { addToCart, changeQuantity } = cartSlice.actions; // Action Creators for the Reducers to export Actions to Modify the State
 
 // export const selectCartId = (state) => state.cart.cartId; // export Selectors to access
 export const selectCart = (state) => state.cart.cartItems; 
-
+export const getQuantity = (state, productId) => {
+  const cartItems = state.cart.cartItems;
+  if (cartItems[productId]) {
+    return cartItems[productId];
+  }
+  return 0; // Return null if the product doesn't exist
+};
 export default cartSlice.reducer; // export reducer for store 
 
 

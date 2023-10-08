@@ -19,14 +19,20 @@ function CartDisplay () {
     console.log(cartProd);
     return (
             <main>
-                <section className="displayArea">
-                    <div className="productList">
-                    {Object.keys(cartProd).map(function(key){
-                            return (<CartDisplayProduct key={key} productId={key} quantity={cartProd[key]} />)
-                        })}
-                        {/* <CartDisplayProduct key={} product={cartProd} /> */}
-                    </div>
-                </section>
+            {Object.keys(cartProd).map(function(key){
+                return (
+                    <section className="cartDisplayArea">
+                        <div className="cartProductList">
+                            <CartDisplayProduct key={key} productId={key} />
+                        </div>
+                        <div className="bill">
+                            quantity={cartProd[key]}
+                            total = 100Rs
+
+                        </div>
+                    </section>
+                    )
+                })}
             </main>
     )
 }

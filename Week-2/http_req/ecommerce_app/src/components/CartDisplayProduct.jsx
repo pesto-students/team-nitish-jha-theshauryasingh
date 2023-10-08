@@ -1,17 +1,37 @@
 import React from 'react';
-import './DisplayProduct.css';
+import './CartDisplayProduct.css';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectSpecificProduct } from '../productSlice';
+import { changeQuantity, getQuantity } from '../cartSlice';
+import RemoveIcon from '@mui/icons-material/Remove';
+import AddIcon from '@mui/icons-material/Add';
 
-// const dispatch = useDispatch();
+function CartDisplayProduct ({productId}) {
+    const data = useSelector((state) => selectSpecificProduct(state, productId));
+    const quantity = useSelector((state) => getQuantity(state, productId));
+    const dispatch = useDispatch();
+    // console.log(data, `SingleProduct -> ${productId} selectSpecificProduct -> `, typeof(data))
 
-function CartDisplayProduct ({productId, quantity}) {
+    const handleQuantityChange = (val) => {
+        let quantityChange = -1;
+        if (val===true){
+            quantityChange = 1;
+        }
+        dispatch(changeQuantity({ productId, quantityChange }));
+    }   
+
     return(
-        <div className="card" >
-            {/* <img src={image} className="card-img-top" alt="..."/> */}
-            <div className="card-body">
-                <>
-                <h5 className="card-title">{productId}</h5>
+        <div className='cart-item'>
+            <img className='cart-img' src={data['image']} alt="Product" />
+            <div className="cart-item-details">
+                <h5 className="card-title">{data['title']}</h5>
                 <p className="card-text">{quantity}</p>
-                </>
+                <button onClick={()=>{handleQuantityChange(true)}}>
+                    <AddIcon/>
+                </button>
+                <button onClick={()=>{handleQuantityChange(false)}}>
+                    <RemoveIcon />
+                </button>
             </div>
         </div>
     )

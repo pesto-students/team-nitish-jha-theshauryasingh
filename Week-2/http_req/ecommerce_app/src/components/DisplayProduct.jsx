@@ -4,6 +4,8 @@ import './DisplayProduct.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '../cartSlice';
 import { selectUserId } from '../userSlice';
+import { selectSpecificProduct } from '../productSlice';
+
 
 // const dispatch = useDispatch();
 
@@ -13,10 +15,9 @@ function DisplayProduct ({productId, title, price, description, image}) {
     const navigate = useNavigate();
 
     const dispatch = useDispatch();
-    const userId = useSelector(selectUserId);
-    let cartId = 102;
 
     const onClickTitle = () => {
+        console.log('onClickTitle ', productId);
         navigate(`/product/${productId}`);
     }
 
