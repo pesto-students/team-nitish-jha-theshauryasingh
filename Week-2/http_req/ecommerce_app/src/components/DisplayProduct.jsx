@@ -10,6 +10,7 @@ import { selectSpecificProduct } from '../productSlice';
 // const dispatch = useDispatch();
 
 function DisplayProduct ({productId, title, price, description, image}) {
+    const [cartValue, setCartValue] = useState(false);
     // console.log(' DisplayProduct ==>>>   ', productId, title, price, description, image);
     const [displayOneProduct, setDisplayOneProduct] = useState(false);
     const navigate = useNavigate();
@@ -25,8 +26,13 @@ function DisplayProduct ({productId, title, price, description, image}) {
         const quantity = 1;
         console.log(`handleAddToCart - ${productId}, ${quantity}`)
         dispatch(addToCart({ productId, quantity }));
+        setCartValue(true);
           
-    }   
+    }
+
+    const handleGoToCart = () => {
+        navigate(`/cart/`);
+    }
     
     return(
         <div className="card" >
@@ -35,7 +41,9 @@ function DisplayProduct ({productId, title, price, description, image}) {
                 <h5 className="card-title" onClick={onClickTitle}>{title} - <i>{price}</i></h5>
                 {/* <p className="card-text">{description}</p> */}
                 {/* { displayOneProduct && (<DisplayOneProduct/>)} */}
-                <button className="btn btn-primary" onClick={handleAddToCart}> Add to Cart </button>
+                {cartValue ? <button className="btn btn-primary" onClick={handleGoToCart}> Go to Cart </button>
+                : <button className="btn btn-primary" onClick={handleAddToCart}> Add to Cart </button> }
+                
             </div>
         </div>
     )
