@@ -10,5 +10,5 @@ function Cart() {
         </>
     )
 }
-
+//enable search
 export default Cart

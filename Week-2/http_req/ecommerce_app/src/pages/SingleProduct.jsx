@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../components/Header';
 import '../components/SingleProduct.css'
 import { useDispatch, useSelector } from 'react-redux';
@@ -36,6 +36,15 @@ function SingleProduct() {
         navigate(`/cart/`);
     }
 
+    // useEffect(()=>{
+    //     var element = document.querySelector('.loader');
+    //     element.parentNode.removeChild(element);
+    //     // const element = document.getElementsByClassName("d-flex");
+    //     // element.remove(); // Removes the div with the 'div-02' id
+    // }, [])
+
+
+
     return (
         <>
             <Header />
@@ -57,9 +66,9 @@ function SingleProduct() {
                     </div>
                 </section>
             </main>
-
+        
         </>
     )
 }
-
+// remove search button
 export default SingleProduct

@@ -22,27 +22,28 @@ function DisplayProduct ({productId, title, price, description, image}) {
         navigate(`/product/${productId}`);
     }
 
-    const handleAddToCart = () => {
-        const quantity = 1;
-        console.log(`handleAddToCart - ${productId}, ${quantity}`)
-        dispatch(addToCart({ productId, quantity }));
-        setCartValue(true);
+    // const handleAddToCart = () => {
+    //     const quantity = 1;
+    //     console.log(`handleAddToCart - ${productId}, ${quantity}`)
+    //     dispatch(addToCart({ productId, quantity }));
+    //     setCartValue(true);
           
-    }
+    // }
 
-    const handleGoToCart = () => {
-        navigate(`/cart/`);
-    }
+    // const handleGoToCart = () => {
+    //     navigate(`/cart/`);
+    // }
     
     return(
         <div className="card" >
             <img src={image} className="card-img-top" alt="..."/>
             <div className="card-body">
-                <h5 className="card-title" onClick={onClickTitle}>{title} - <i>{price}</i></h5>
+                <h5 className="card-title" onClick={onClickTitle}>{title}</h5>
+                <i>{price} ₹</i>
                 {/* <p className="card-text">{description}</p> */}
                 {/* { displayOneProduct && (<DisplayOneProduct/>)} */}
-                {cartValue ? <button className="btn btn-primary" onClick={handleGoToCart}> Go to Cart </button>
-                : <button className="btn btn-primary" onClick={handleAddToCart}> Add to Cart </button> }
+                {/* {cartValue ? <button className="btn btn-primary" onClick={handleGoToCart}> Go to Cart </button>
+                : <button className="btn btn-primary" onClick={handleAddToCart}> Add to Cart </button> } */}
                 
             </div>
         </div>
