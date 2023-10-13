@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from 'react';
 import Header from '../components/Header';
 import '../components/SingleProduct.css'
-import { useDispatch, useSelector } from 'react-redux';
-import { addToCart } from '../cartSlice';
-import { selectSpecificProduct } from '../productSlice';
+import { useSelector } from 'react-redux';
+import { selectSpecificProduct } from '../redux/slices/productSlice';
+import { ProductCard } from '../components/ProductCard';
 import { useParams } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
 
 
 
@@ -13,9 +11,6 @@ import { useNavigate } from 'react-router-dom';
 // getAllProducts
 
 function SingleProduct() {
-    const [cartValue, setCartValue] = useState(false);
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
 
     // const [title, price, description, image] = useSelector(selectSpecificProduct);
     // console.log(title, price, description, image);
@@ -24,31 +19,14 @@ function SingleProduct() {
     const data = useSelector((state) => selectSpecificProduct(state, productId));
     // console.log(data, `SingleProduct -> ${productId} ${id} selectSpecificProduct -> `, typeof(data))
 
-    const handleAddToCart = () => {
-        const quantity = 1;
-        console.log(`handleAddToCart - ${productId}, ${quantity};`)
-        dispatch(addToCart({ productId, quantity }));
-        setCartValue(true);
-          
-    }
-
-    const handleGoToCart = () => {
-        navigate(`/cart/`);
-    }
-
-    // useEffect(()=>{
-    //     var element = document.querySelector('.loader');
-    //     element.parentNode.removeChild(element);
-    //     // const element = document.getElementsByClassName("d-flex");
-    //     // element.remove(); // Removes the div with the 'div-02' id
-    // }, [])
 
 
 
     return (
         <>
             <Header />
-            <main>
+            <ProductCard data={data} productId={productId}/>
+            {/* <main>
                 <section className="productDisplayArea">
                     <div className="product-list">
                         <div className="product-item">
@@ -65,7 +43,7 @@ function SingleProduct() {
                         </div>
                     </div>
                 </section>
-            </main>
+            </main> */}
         
         </>
     )

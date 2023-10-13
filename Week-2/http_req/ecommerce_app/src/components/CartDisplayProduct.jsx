@@ -1,8 +1,8 @@
 import React from 'react';
 import './CartDisplayProduct.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectSpecificProduct } from '../productSlice';
-import { changeQuantity, getQuantity } from '../cartSlice';
+import { selectSpecificProduct } from '../redux/slices/productSlice';
+import { changeQuantity, getQuantity } from '../redux/slices/cartSlice';
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
 
@@ -25,6 +25,7 @@ function CartDisplayProduct ({productId}) {
             <img className='cart-img' src={data['image']} alt="Product" />
             <div className="cart-item-details">
                 <h5 className="card-title">{data['title']}</h5>
+                {data['price']} ₹
                 <p className="card-text">{quantity}</p>
                 <button onClick={()=>{handleQuantityChange(true)}}>
                     <AddIcon/>

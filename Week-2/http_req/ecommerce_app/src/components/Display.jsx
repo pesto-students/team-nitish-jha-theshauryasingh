@@ -3,7 +3,7 @@ import './Display.css';
 import DisplayProduct from "./DisplayProduct";
 import { getAllProducts } from '../api/productApi';
 import { useDispatch, useSelector } from 'react-redux';
-import { addToProduct, selectProduct } from '../productSlice';
+import { addToProduct, selectProduct } from '../redux/slices/productSlice';
 
 function Display() {
     const dispatch = useDispatch();
