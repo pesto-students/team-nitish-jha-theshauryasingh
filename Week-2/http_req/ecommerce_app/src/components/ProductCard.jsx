@@ -3,6 +3,7 @@ import { styled } from '@mui/material/styles';
 import CardMedia from '@mui/material/CardMedia';
 import CardActions from '@mui/material/CardActions';
 import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
 import { addToCart } from '../redux/slices/cartSlice';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
