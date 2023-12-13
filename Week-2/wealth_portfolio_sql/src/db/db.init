@@ -1,0 +1,138 @@
+-- seed script
+
+-- migration for prod (seed - to execute insert queries)
+-- sync() in sequelize for dev
+
+-- Insert data for three users
+-- INSERT INTO `wealth_portfolio`.`users` (username, password) VALUES
+--   ('user1', 'password1'),
+--   ('user2', 'password2'),
+--   ('user3', 'password3');
+
+-- -- Insert data for assets for user 1
+-- INSERT INTO `wealth_portfolio`.`assets` (user_id, asset_type, asset_name, value) VALUES
+--   (1, 'Equity', 'Stock 1', 5000),
+--   (1, 'Equity', 'Stock 2', 8000),
+--   (1, 'Fixed Income', 'Bonds 1', 10000),
+--   (1, 'Alternatives', 'Real Estate', 250000);
+
+-- -- Insert data for assets for user 2
+-- INSERT INTO `wealth_portfolio`.`assets` (user_id, asset_type, asset_name, value) VALUES
+--   (2, 'Equity', 'Stock 3', 6000),
+--   (2, 'Equity', 'Stock 4', 7500),
+--   (2, 'Fixed Income', 'Bonds 2', 12000),
+--   (2, 'Alternatives', 'Commodities', 30000);
+
+-- -- Insert data for assets for user 3
+-- INSERT INTO `wealth_portfolio`.`assets` (user_id, asset_type, asset_name, value) VALUES
+--   (3, 'Equity', 'Stock 5', 7500),
+--   (3, 'Equity', 'Stock 6', 6000),
+--   (3, 'Fixed Income', 'Bonds 3', 15000),
+--   (3, 'Alternatives', 'Startups', 50000);
+
+-- -- Insert income and expenses data for user 1
+-- INSERT INTO `wealth_portfolio`.`income_expenses` (user_id, transaction_type, amount, transaction_date) VALUES
+--   (1, 'Income', 4000, '2023-01-10'),
+--   (1, 'Income', 3000, '2023-01-20'),
+--   (1, 'Income', 3500, '2023-02-05'),
+--   (1, 'Income', 4200, '2023-02-15'),
+--   (1, 'Expense', 1500, '2023-01-15'),
+--   (1, 'Expense', 800, '2023-01-25'),
+--   (1, 'Expense', 1700, '2023-02-10'),
+--   (1, 'Expense', 1200, '2023-02-20');
+
+-- -- Insert savings data for user 1
+-- INSERT INTO `wealth_portfolio`.`savings` (user_id, savings_type, amount) VALUES
+--   (1, 'Emergency Fund', 5000),
+--   (1, 'Retirement Fund', 10000);
+
+-- -- Insert detailed income and expenses data for user 1
+-- INSERT INTO `wealth_portfolio`.`income_expenses_details` (transaction_id, detail_description) VALUES
+--   (1, 'Received salary from XYZ Inc.'),
+--   (2, 'Received bonus for the month'),
+--   (3, 'Freelance income received'),
+--   (4, 'Received dividend from stocks');
+
+-- -- Insert income and expenses data for user 2
+-- INSERT INTO `wealth_portfolio`.`income_expenses` (user_id, transaction_type, amount, transaction_date) VALUES
+--   (2, 'Income', 4500, '2023-01-10'),
+--   (2, 'Income', 3200, '2023-01-20'),
+--   (2, 'Income', 3600, '2023-02-05'),
+--   (2, 'Income', 4100, '2023-02-15'),
+--   (2, 'Expense', 1400, '2023-01-15'),
+--   (2, 'Expense', 900, '2023-01-25'),
+--   (2, 'Expense', 1600, '2023-02-10'),
+--   (2, 'Expense', 1100, '2023-02-20');
+
+-- -- Insert savings data for user 2
+-- INSERT INTO `wealth_portfolio`.`savings` (user_id, savings_type, amount) VALUES
+--   (2, 'Emergency Fund', 6000),
+--   (2, 'Retirement Fund', 11000);
+
+-- -- Insert detailed income and expenses data for user 2
+-- INSERT INTO `wealth_portfolio`.`income_expenses_details` (transaction_id, detail_description) VALUES
+--   (9, 'Received salary from ABC Inc.'),
+--   (10, 'Received quarterly bonus'),
+--   (11, 'Consulting income received'),
+--   (12, 'Received dividends from investments');
+
+-- -- Insert income and expenses data for user 3
+-- INSERT INTO `wealth_portfolio`.`income_expenses` (user_id, transaction_type, amount, transaction_date) VALUES
+--   (3, 'Income', 4800, '2023-01-10'),
+--   (3, 'Income', 3100, '2023-01-20'),
+--   (3, 'Income', 3400, '2023-02-05'),
+--   (3, 'Income', 4300, '2023-02-15'),
+--   (3, 'Expense', 1300, '2023-01-15'),
+--   (3, 'Expense', 850, '2023-01-25'),
+--   (3, 'Expense', 1500, '2023-02-10'),
+--   (3, 'Expense', 1000, '2023-02-20');
+
+-- -- Insert savings data for user 3
+-- INSERT INTO `wealth_portfolio`.`savings` (user_id, savings_type, amount) VALUES
+--   (3, 'Emergency Fund', 5500),
+--   (3, 'Retirement Fund', 10500);
+
+-- -- Insert detailed income and expenses data for user 3
+-- INSERT INTO `wealth_portfolio`.`income_expenses_details` (transaction_id, detail_description) VALUES
+--   (17, 'Received salary from LMN Ltd.'),
+--   (18, 'Received annual bonus'),
+--   (19, 'Part-time work income received'),
+--   (20, 'Received rental income from properties');
+-------------------------------------------------------------------------------------------------
+-- CREATE TABLE `wealth_portfolio`.`income_expenses_details` (
+--   detail_id INT AUTO_INCREMENT PRIMARY KEY,
+--   transaction_id INT,
+--   detail_description TEXT,
+--   FOREIGN KEY (transaction_id) REFERENCES income_expenses(transaction_id)
+-- );
+
+-- CREATE TABLE `wealth_portfolio`.`savings` (
+--   savings_id INT AUTO_INCREMENT PRIMARY KEY,
+--   user_id INT,
+--   savings_type VARCHAR(255) NOT NULL,
+--   amount DECIMAL(10, 2) NOT NULL,
+--   FOREIGN KEY (user_id) REFERENCES users(user_id)
+-- );
+
+-- CREATE TABLE `wealth_portfolio`.`income_expenses` (
+--   transaction_id INT AUTO_INCREMENT PRIMARY KEY,
+--   user_id INT,
+--   transaction_type ENUM('Income', 'Expense') NOT NULL,
+--   amount DECIMAL(10, 2) NOT NULL,
+--   transaction_date DATE NOT NULL,
+--   FOREIGN KEY (user_id) REFERENCES users(user_id)
+-- );
+
+-- CREATE TABLE `wealth_portfolio`.`assets` (
+--   asset_id INT AUTO_INCREMENT PRIMARY KEY,
+--   user_id INT,
+--   asset_type ENUM('Equity', 'Fixed Income', 'Alternatives') NOT NULL,
+--   asset_name VARCHAR(255) NOT NULL,
+--   value DECIMAL(10, 2) NOT NULL,
+--   FOREIGN KEY (user_id) REFERENCES users(user_id)
+-- );
+
+-- CREATE TABLE `wealth_portfolio`.`users` (
+--   `user_id` INT AUTO_INCREMENT PRIMARY KEY,
+--   `username` VARCHAR(255) NOT NULL,
+--   `password` VARCHAR(255) NOT NULL );
