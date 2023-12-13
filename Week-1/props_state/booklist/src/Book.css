@@ -1,0 +1,17 @@
+.book-container{
+    text-align: center;
+    background-color: black;
+    padding: auto;
+}
+
+.book-title{
+    color: brown;
+}
+
+.book-author{
+    color: red;
+}
+
+.book-year{
+    color: green;
+}
