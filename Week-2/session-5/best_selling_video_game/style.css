@@ -1,0 +1,25 @@
+:root {
+    --table-color: forestgreen;
+    --row-bg-color: honeydew;
+    font-family: Calibri, Myriad;
+    display:flex;
+    justify-content: center;
+ }
+    
+ /* Your solution goes here */
+ table, caption{
+   border: 1px solid forestgreen
+ }
+ 
+ tr:nth-child(even){
+   background-color : lightgreen;
+ }
+ 
+ table {
+   padding: 1px;
+ }
+ 
+ caption{
+   background-color : forestgreen;
+   color: white;
+ }
