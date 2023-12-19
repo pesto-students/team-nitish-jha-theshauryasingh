@@ -1,0 +1,43 @@
+.cartDisplayArea {
+  display: flex;
+}
+
+.cartProductList {
+  display: flex;
+  align-items: start;
+  width: 70%;
+  flex-direction: column;
+  margin: 10px 10px;
+  border: 1px black solid;
+}
+
+.bill{
+  width: 30%;
+  margin: 10px 10px;
+  border: 1px black solid;
+}
+
+.cart-item {
+    display: flex;
+    width: 98%;
+    margin: 1% 1%;
+    border: 1px black solid;
+  }
+
+  .cart-img {
+    margin: auto;
+    width: 30%;
+    height: 100px;
+    margin: 1% 1%;
+    object-fit: cover; 
+  }
+  
+  .cart-item-details{
+    /* width: 70%; */
+  }
+
+  
+  .btn {
+    margin-top: 10px;
+  }
+  
