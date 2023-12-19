@@ -1,3 +1,3 @@
 const db = require("../models")
 
-console.log('finance ciontroller db -> ', db)
+console.log('finance controller db -> ', db)

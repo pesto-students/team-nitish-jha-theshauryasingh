@@ -17,6 +17,7 @@ const getAllUser = async (req, res) => {
 }
 
 const registerUser = async (req, res) => {
+    console.log(" ------------------------------------------------------------------------------- register requested ")
     console.log(req.body, " ------------------------------------------------------------------------------- register requested ")
     // const assetToBeUpdated = await Asset.update({ value: 7000 }, {where: { asset_name: "Stock 3" , user_id: id} }) // req.body = { value: 5000 }
     res.status(200).send(' user To Be register ')
@@ -30,7 +31,7 @@ const deleteUser = async (req, res) => {
     //       firstName: "Jane"
     //     }
     //   });
-    await Asset.destroy({ where: { id: id } })
+    // await Asset.destroy({ where: { id: id } })
     res.status(200).send("asset is deleted")
 }
 
