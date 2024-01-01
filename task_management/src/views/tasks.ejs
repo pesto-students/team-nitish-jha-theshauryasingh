@@ -1,0 +1,11 @@
+<%- include('partials/header'); -%>
+<div class="container"> 
+    <h1>Tasks:</h1> 
+  <ul>  
+   <% tasks.forEach(task => { %>
+       <li><%= task %></li>
+   <%}); %>
+  </ul> 
+  <a class="btn" href="/">Go Back</a> 
+</div> 
+<%- include('partials/footer'); -%>
