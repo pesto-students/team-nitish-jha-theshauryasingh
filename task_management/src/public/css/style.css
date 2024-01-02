@@ -9,6 +9,12 @@
 body {
   font-family: "Open Sans", sans-serif;
 }
+
+.header {
+  display: flex;
+  flex-direction: row;
+}
+
 .container {
   width: 50%;
   margin: auto;
